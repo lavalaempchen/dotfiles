@@ -1,0 +1,268 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+	"type": "command-raw",
+        "source": "cat /home/lavalaempchen/.config/fastfetch/ascii.txt | lolcat --force",	
+        "height": 1,
+        "width": 1,
+        "padding": {
+            "top": 1,
+            "left": 2,
+            "right": 2
+        }
+    },
+    "display": {
+        "percent": {
+            "type": 2
+        },
+        "bar": {
+            "char": {
+                "elapsed": "=",
+                "total": "-"
+            },
+            "width": 13
+        },
+        "color": {
+            "keys": "blue"
+        },
+        "separator": "",
+        // Constants are reusable strings referenced by {$1}, {$2}, etc.
+        // These contain ANSI escape codes for cursor positioning
+        "constants": [
+            "─────────────────────────────────────────", // {$1} - horizontal line for inner borders
+            "\u001b[42D",                                     // {$2} - move cursor left 47 columns
+            "\u001b[42C",                                     // {$3} - move cursor right 47 columns
+            "\u001b[41C",                                     // {$4} - move cursor right 46 columns
+            "═════════════════════════════════════════"  // {$5} - horizontal line for outer borders
+        ],
+        "brightColor": false
+    },
+    "modules": [
+        {
+            "type": "title",
+            "key": "╔═══════════════╦═{$5}╗\u001b[41D",
+            "format": "\u001b[1m{#keys} {1} - {2} "
+        },
+        /*
+        {
+            "type": "os",
+            // Key format breakdown for OS module:
+            // "║  {icon}  \u001b[s{sysname}\u001b[u\u001b[10C│{$3}║{$2}"
+            //
+            // ║                    - Left border of key block
+            //   {icon}             - OS icon (defined internally by fastfetch)
+            //   \u001b[s           - ANSI escape: save cursor position (ESC[s)
+            // {sysname}            - Format variable: system name (e.g., "Linux", "Darwin")
+            // \u001b[u             - ANSI escape: restore cursor to saved position (ESC[u)
+            //                        Necessary because the length of `{sysname}` differs between different platforms
+            // \u001b[10C           - ANSI escape: move cursor right 10 columns (ESC[10C)
+            // │                    - Right border of key block (always 10 columns from left border)
+            // {$3}                 - Reference to constants[2]: move cursor right 47 columns
+            // ║                    - Right border of value block
+            // {$2}                 - Reference to constants[1]: move cursor left 47 columns
+            //
+            // This creates a fixed-width layout where the key block is exactly 10 columns wide,
+            // regardless of the actual content length. The cursor manipulation ensures proper
+            // alignment for the table-like structure.
+            "key": "║  {icon}  \u001b[s{sysname}\u001b[u\u001b[10C║{$3}║{$2}"
+        },
+        */
+        {
+            "type": "command",
+            "key": "║ {icon}  Boot Time  ║ {$4}{#keys}║{$2}",
+            "text": "systemd-analyze | awk 'NR==1{print $NF}'"
+        },
+        {
+            "type": "uptime",
+            "key": "║ {icon}  Uptime     ║ {$4}{#keys}║{$2}"
+        },
+        {
+            "type": "users",
+            "myselfOnly": false,                               // show all users
+            "keyIcon": "",
+            "key": "║ {icon}  Login      ║ {$4}{#keys}║{$2}",
+            "format": "{login-time}"
+        },
+
+        // Hardware section with cyan color theme
+        {
+            "type": "custom",
+            "key": "║{#cyan}┌──────────────┬{$1}┐{#keys}║\u001b[37D",
+            "format": "{#bright_cyan} Hardware "
+        },
+        {
+            "type": "memory",
+            "key": "║{#cyan}│ {icon}  RAM       │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "swap",
+            "key": "║{#cyan}│ {icon}  SWAP      │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "disk",
+            "key": "║{#cyan}│ {icon}  Disk      │{$4}│{#keys}║{$2}",
+            "format": "{size-percentage-bar} {size-used} / {size-total}"
+        },
+        {
+            "type": "physicaldisk",
+            "temp": true,
+            "key": "║{#cyan}│ {icon}  Temp      │{$4}│{#keys}║{$2}",
+            "format": "{temperature}"
+        },
+        {
+            "type": "cpuusage",
+            "key": "║{#cyan}│ {icon}  CPU       │{$4}│{#keys}║{$2}",
+            "format": "",
+            "percent": {
+                "type": ["bar", "num", "hide-others"]
+            }
+        },
+        {
+            "type": "battery",
+            "key": "║{#cyan}│ {icon}  Battery   │{$4}│{#keys}║{$2}",
+            "format": "{capacity-bar} {status}",
+            "percent": {
+                "type": ["bar", "hide-others"]
+            }
+        },
+        {
+            "type": "command",
+            "key": "║{#cyan}│ {icon}  Power     │{$4}│{#keys}║{$2}",
+            "text": "powerprofilesctl get"
+        },
+        {
+            "type": "custom",
+            "key": "║{#cyan}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        },
+
+        // Desktop section with green color theme
+        {
+            "type": "custom",
+            "key": "║{#green}┌──────────────┬{$1}┐{#keys}║\u001b[37D",
+            "format": "{#bright_green} Basics "
+        },
+        {
+            "type": "bios",
+            "key": "║{#green}│ {icon}  Bios      │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "packages",
+            "key": "║{#green}│ {icon}  Packages  │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "kernel",
+            "key": "║{#green}│ {icon}  Kernel    │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "command",
+            "key": "║{#green}│ {icon}  OS        │{$4}│{#keys}║{$2}",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+        },
+        {
+            "type": "custom",
+            "key": "║{#green}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        },
+
+        // Terminal section with yellow color theme
+        {
+            "type": "custom",
+            "key": "║{#yellow}┌──────────────┬{$1}┐{#keys}║\u001b[37D",
+            "format": "{#bright_yellow} IP "
+        },
+        {
+            // localip IPv4
+            "type": "localip",
+            "key": "║{#yellow}│ {icon}  Local IPv4│{$4}│{#keys}║{$2}",
+            "showPrefixLen": true,
+            "showIpv4": true,
+            "showIpv6": false,
+            "showMtu": true
+        },
+        {
+          "type": "publicip",
+          "key": "║{#yellow}│ {icon}  Public  v4│{$4}│{#keys}║{$2}",
+            "ipv6": false,
+            "format": "{$2}{$3}{ip}  {#2}[{location}]"
+        },
+        {
+           // localip IPv6
+            "type": "localip",
+            "key": "║{#yellow}│ {icon}  Local IPv6│{$4}│{#keys}║{$2}",
+            "showPrefixLen": true,
+            "showIpv4": false,
+            "showIpv6": true
+        },
+        {
+            "type": "custom",
+            "key": "║{#yellow}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        },
+
+        // Development section with red color theme
+        {
+            "type": "custom",
+            "key": "║{#red}┌──────────────┬{$1}┐{#keys}║\u001b[39D",
+            "format": "{#bright_red} Development "
+        },
+        {
+            "type": "command",
+            "keyIcon": "",
+            "key": "║{#red}│ {icon}  Python    │{$4}│{#keys}║{$2}",
+            "text": "python --version",
+            "format": "{}"                             // {~1} removes first character (v)
+        },
+
+        {
+            "type": "command",
+            "keyIcon": "",
+            "key": "║{#red}│ {icon}  Java    │{$4}│{#keys}║{$2}",
+            "text": "java --version",
+            "format": "{}"                             // {~1} removes first character (v)
+        },
+        {
+            "type": "custom",
+            "key": "║{#red}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        },
+
+        // Uptime section with magenta color theme
+        {
+            "type": "custom",
+            "key": "║{#magenta}┌──────────────┬{$1}┐{#keys}║\u001b[36D",
+            "format": "{#bright_magenta} Other "
+        },
+        {
+            "type": "command",
+            "key": "║{#magenta}│ {icon}  Audio-Out │{$4}│{#keys}║{$2}",
+            "text": "pactl list sinks | grep -A5 \"$(pactl get-default-sink)\" | grep \"Description\" | sed 's/.*Description: //'"
+        },
+        {
+           "type": "weather",
+           "timeout": 1000,
+           "key": "║{#magenta}│ {icon}  Weather   │{$4}│{#keys}║{$2}",
+           "outputFormat": "%t+-+%C"
+        },
+        {
+            "type": "custom",
+            "key": "║{#magenta}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        }, 
+        {
+            "type": "custom",
+            "key": "╚═════════════════{$5}╝",                // Bottom border of the entire layout
+            "format": ""
+        },    
+        {
+            "type": "colors",
+	        "symbol": "star",
+            "paddingLeft": 2
+        },
+        {
+            "type": "datetime",
+            "key": "{icon} ",
+            "format": "{year}-{month-pretty}-{day-pretty} {hour-pretty}:{minute-pretty}:{second-pretty} {timezone-name}"
+        }                                     
+    ]
+}
