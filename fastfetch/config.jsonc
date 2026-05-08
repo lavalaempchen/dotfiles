@@ -104,12 +104,6 @@
             "format": "{size-percentage-bar} {size-used} / {size-total}"
         },
         {
-            "type": "physicaldisk",
-            "temp": true,
-            "key": "║{#cyan}│ {icon}  Temp      │{$4}│{#keys}║{$2}",
-            "format": "{temperature}"
-        },
-        {
             "type": "cpuusage",
             "key": "║{#cyan}│ {icon}  CPU       │{$4}│{#keys}║{$2}",
             "format": "",
