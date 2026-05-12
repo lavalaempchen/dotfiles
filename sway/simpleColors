@@ -1,0 +1,30 @@
+set $bg-basic #1E202E
+set $bg-bg #0F1017
+set $bg-blue #03204E
+set $bg-teal #094043
+set $bg-green #163F13
+set $bg-yellow #664200
+set $bg-red #49081C
+set $bg-violet #470B49
+set $bg-accent-dark #000B1E
+set $bg-accent-light #0A3448
+
+set $text-basic #C7D3E6
+set $text-blue #89b4fa
+set $text-teal #A5EFF3
+set $text-green #B4E8B0
+set $text-yellow #FFDB99
+set $text-red #F5A3BC
+set $text-violet #F3B8F5
+set $text-accent-dark #99BEFF
+set $text-accent-light #A5DAF3
+
+set $vibrant-basic #30344A
+set $vibrant-blue #0850C4
+set $vibrant-teal #11787E
+set $vibrant-green #2F8D2A
+set $vibrant-yellow #A36A00
+set $vibrant-red #931037
+set $vibrant-violet #9A199F
+set $vibrant-accent-dark #000B1E
+set $vibrant-accent-light #146890
