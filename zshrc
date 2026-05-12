@@ -74,7 +74,7 @@ ZSH_THEME="crunch"
 plugins=(git conda-zsh-completion)
 
 source $ZSH/oh-my-zsh.sh
-
+source ~/.zshenv
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

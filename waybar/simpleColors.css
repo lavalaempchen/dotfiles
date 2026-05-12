@@ -1,0 +1,15 @@
+@define-color bg-basic #1E202E;
+@define-color bg-blue #03204E;
+@define-color bg-green #163F13;
+@define-color bg-yellow #664200;
+@define-color bg-red #49081C;
+@define-color bg-accent-dark #11203E;
+@define-color bg-accent-light #0A3448;
+
+@define-color text-basic #C7D3E6;
+@define-color text-blue #89b4fa;
+@define-color text-green #B4E8B0;
+@define-color text-yellow #FFDB99;
+@define-color text-red #F5A3BC;
+@define-color text-accent-dark #AFC2E9;
+@define-color text-accent-light #A5DAF3;

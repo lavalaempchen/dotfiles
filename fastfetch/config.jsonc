@@ -211,8 +211,8 @@
         {
             "type": "command",
             "keyIcon": "",
-            "key": "║{#red}│ {icon}  Java    │{$4}│{#keys}║{$2}",
-            "text": "java --version",
+            "key": "║{#red}│ {icon}  Java      │{$4}│{#keys}║{$2}",
+            "text": "java --version | head -1",
             "format": "{}"                             // {~1} removes first character (v)
         },
         {

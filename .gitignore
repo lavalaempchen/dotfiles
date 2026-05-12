@@ -52,7 +52,7 @@ vim/plugged
 !1Password/ssh/
 !1Password/ssh/*
 
-# My little sway
+#sway
 !sway
 !sway/*
 
@@ -63,3 +63,7 @@ vim/plugged
 # fastfetch ... I worked too hard on this
 !fastfetch
 !fastfetch/*
+
+#waybar ...now with colors
+!waybar
+!waybar/*
