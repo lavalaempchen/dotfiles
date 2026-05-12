@@ -1,15 +1,31 @@
 @define-color bg-basic #1E202E;
+@define-color bg-bg #0F1017;
 @define-color bg-blue #03204E;
+@define-color bg-teal #094043;
 @define-color bg-green #163F13;
 @define-color bg-yellow #664200;
 @define-color bg-red #49081C;
-@define-color bg-accent-dark #11203E;
+@define-color bg-violet #470B49;
+@define-color bg-accent-dark #000B1E;
 @define-color bg-accent-light #0A3448;
 
 @define-color text-basic #C7D3E6;
 @define-color text-blue #89b4fa;
+@define-color text-teal #A5EFF3;
 @define-color text-green #B4E8B0;
 @define-color text-yellow #FFDB99;
 @define-color text-red #F5A3BC;
-@define-color text-accent-dark #AFC2E9;
+@define-color text-violet #F3B8F5;
+@define-color text-accent-dark #99BEFF;
 @define-color text-accent-light #A5DAF3;
+
+
+@define-color vibrant-basic #30344A;
+@define-color vibrant-blue #0850C4;
+@define-color vibrant-teal #11787E;
+@define-color vibrant-green #2F8D2A;
+@define-color vibrant-yellow #A36A00;
+@define-color vibrant-red #931037;
+@define-color vibrant-violet #9A199F;
+@define-color vibrant-accent-dark #000B1E;
+@define-color vibrant-accent-light #146890;

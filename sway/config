@@ -233,15 +233,19 @@ swaybar_command waybar
 }
 #
 # keybinding nach ArchLinux Wiki fuer zweite funktion der fn Keys
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86Search exec $menu 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% #F3
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% #F2
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle #F1
+#bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle   #doesnt seem to exist
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- #F7
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+ #F8
+bindsym XF86AudioPlay exec playerctl play-pause #F5
+bindsym XF86AudioNext exec playerctl next #F6
+bindsym XF86AudioPrev exec playerctl previous #F4
+bindsym XF86Search exec $menu #dont think that exists
+bindsym Print exec grim -g "$(slurp)" #F11
+bindsym XF86AudioMedia exec pavucontrol #F12
+# F9 is super and p so it shows 1 password, in combination with later 
 
 # Lock screen
 bindsym $mod+x exec bash ~/.swaylock/lock.sh
