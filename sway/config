@@ -107,10 +107,10 @@ default_border pixel 2
 default_floating_border pixel 2
 
 # target                 title     bg    text   indicator  border
-client.focused           $bg-blue $bg-basic $text-basic  $bg-accent-dark $bg-blue
+client.focused           $bg-blue $bg-basic $text-basic  $bg-blue $bg-blue
 client.focused_inactive  $bg-accent-light $bg-basic $text-basic $bg-accent-light $bg-accent-light
 client.unfocused         $bg-accent-dark $bg-basic $text-basic $bg-accent-dark $bg-accent-dark
-client.urgent            $bg-red $bg-basic $text-basic $bg-red  $bg-red$peach
+client.urgent            $bg-red $bg-basic $text-basic $bg-red  $bg-red
 #
 # Moving around:
 #
